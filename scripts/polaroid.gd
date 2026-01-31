@@ -4,8 +4,14 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Sprite2D.texture = load(texture_path)	
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func set_sprite():
+	if texture_path:
+		print(texture_path)
+		$Sprite2D.texture = load(texture_path)
+			

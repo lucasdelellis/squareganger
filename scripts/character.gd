@@ -4,10 +4,8 @@ extends Node2D
 
 func _ready() -> void:
 	show()
-	$AnimatedSprite2D.sprite_frames = load(frame_path)
-	$AnimatedSprite2D.play()
-	$Mask.texture = preload("res://assets/masks/m0.png")
-	$Mask.hide()
+	put_mask_on("res://assets/masks/m0.png")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -20,3 +18,9 @@ func take_mask_off(): #When the player guesses right or wrong for the second tim
 	$Maks.fade_out()
 	#TO DO: add a timer for the fade_out
 	$Mask.hide()
+
+func set_sprite():
+	if frame_path:
+		$AnimatedSprite2D.sprite_frames = load(frame_path)
+		$AnimatedSprite2D.play()
+	

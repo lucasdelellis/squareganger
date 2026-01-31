@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://b8ix58udv5mkc" path="res://scenes/mask.gd" id="3_lrhn5"]
 
 [node name="Character" type="Node2D" unique_id=521361232]
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_rkhd4")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1195770611]
 sprite_frames = ExtResource("2_lrhn5")
