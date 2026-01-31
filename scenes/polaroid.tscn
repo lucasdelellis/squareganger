@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dhg7pf7u4kp6x"]
+
+[ext_resource type="Script" uid="uid://b6cds14r4ayol" path="res://scripts/polaroid.gd" id="1_q7e2x"]
+
+[node name="Polaroid" type="Node2D" unique_id=1189214297]
+script = ExtResource("1_q7e2x")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1407304413]

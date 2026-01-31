@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://3d238tggidn4"]
+
+[ext_resource type="Script" uid="uid://wrkmc5mq5jic" path="res://scripts/character.gd" id="1_rkhd4"]
+[ext_resource type="SpriteFrames" uid="uid://bopyin13kyjre" path="res://assets/sprite-frames/sp1.tres" id="2_lrhn5"]
+[ext_resource type="Script" uid="uid://b8ix58udv5mkc" path="res://scenes/mask.gd" id="3_lrhn5"]
+
+[node name="Character" type="Node2D" unique_id=521361232]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_rkhd4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1195770611]
+sprite_frames = ExtResource("2_lrhn5")
+animation = &"still"
+
+[node name="Mask" type="Sprite2D" parent="." unique_id=566637455]
+script = ExtResource("3_lrhn5")
