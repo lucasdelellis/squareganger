@@ -1,26 +1,24 @@
 [gd_scene format=3 uid="uid://cgvhupxgy3bx3"]
 
 [ext_resource type="Script" uid="uid://2kohxy6apvc2" path="res://scripts/game_manager.gd" id="1_hwd4i"]
+[ext_resource type="Texture2D" uid="uid://cgk4ywpl5twee" path="res://assets/ui/background.png" id="2_eaq8r"]
 [ext_resource type="PackedScene" uid="uid://bolm7274qvq8u" path="res://scenes/HUD.tscn" id="2_glms7"]
 [ext_resource type="PackedScene" uid="uid://dhg7pf7u4kp6x" path="res://scenes/polaroid.tscn" id="3_oo155"]
 [ext_resource type="PackedScene" uid="uid://3d238tggidn4" path="res://scenes/character.tscn" id="4_eaq8r"]
-[ext_resource type="Script" uid="uid://wrkmc5mq5jic" path="res://scripts/character.gd" id="5_eaq8r"]
 
 [node name="GameManager" type="Node" unique_id=654793040]
 script = ExtResource("1_hwd4i")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=736934531]
-offset_right = 1920.0
-offset_bottom = 1080.0
-metadata/_edit_lock_ = true
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1437377455]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_eaq8r")
 
 [node name="Hud" parent="." unique_id=194243237 instance=ExtResource("2_glms7")]
 
 [node name="Polaroid" parent="." unique_id=1189214297 instance=ExtResource("3_oo155")]
 position = Vector2(1400, 400)
 
-[node name="Character" type="Node2D" parent="." unique_id=521361232 instance=ExtResource("4_eaq8r")]
+[node name="Character" parent="." unique_id=521361232 instance=ExtResource("4_eaq8r")]
 position = Vector2(960, 450)
 scale = Vector2(1.7, 1.7)
-script = ExtResource("5_eaq8r")
-metadata/_edit_group_ = true

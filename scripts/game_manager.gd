@@ -6,13 +6,20 @@ const CHARACTER_PATH = 'res://assets/characters/c'
 const SPRITE_FRAMES_PATH = 'res://assets/sprite-frames/sp'
 const MASK_PATH = 'res://assets/masks/m'
 
+var player_masks: Array[int] = [1, 2]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Hud/MaskSelector.render_masks([{"maskId": 1, "imagePath": "res://assets/masks/m1.png"}, {"maskId": 2, "imagePath": "res://assets/masks/m2.png"}])
+	start_game()
+
+func start_game() -> void:
+	var masks = []
+	for mask_id in player_masks:
+		masks.append({"maskId": mask_id, "imagePath": get_mask_img(mask_id)})
+	$Hud/MaskSelector.render_masks(masks)
 	$Hud/MaskSelector.mask_selected.connect(_on_mask_selected)
 	choose_characters() #chooses and assigns to the childs	
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
