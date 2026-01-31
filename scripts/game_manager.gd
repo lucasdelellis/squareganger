@@ -1,9 +1,9 @@
 extends Node
 
 const MAIN_SCENE = preload("res://scenes/game_manager.tscn")
-const AMOUNT_CHARACTERS = 4
+const GROUP_AMOUNT = 3
+const CHARACTERS_AMOUNT = 3
 const CHARACTER_PATH = 'res://assets/characters/c'
-const SPRITE_FRAMES_PATH = 'res://assets/sprite-frames/sp'
 const MASK_PATH = 'res://assets/masks/m'
 
 var player_masks: Array[int] = [1, 2]
@@ -29,30 +29,31 @@ func _process(delta: float) -> void:
 	pass
 	
 func choose_characters():
-	var n = int(randf() * AMOUNT_CHARACTERS) #number of polaroid
-	$Polaroid.texture_path = get_polaroid_img(n)
+	var group = int(randf() * GROUP_AMOUNT) + 1 #number of groups
+	var n = int(randf() * CHARACTERS_AMOUNT) + 1 #number of faces
+	$Polaroid.texture_path = get_polaroid_img(group, n)
 	print("Chosen polaroid: ", n)
 	var n_char = randf()  #number of character
 	print("Right?: ", n_char < 0.3)
 	if n_char < 0.3: 
-		$Character.frame_path = get_character_sf(n)
+		$Character.face_path = get_character_img(group, n)
 	else:
-		n_char = int(randf() * AMOUNT_CHARACTERS) #small chances that the new character is the correct one
-		$Character.frame_path = get_character_sf(n_char)
+		n_char = int(randf() * CHARACTERS_AMOUNT) + 1 #small chances that the new character is the correct onee
+		$Character.face_path = get_character_img(group, n_char)
 		print("Wrong character: ", n_char)
 	$Polaroid.set_sprite()
 	$Character.set_sprite()
-				
+
 func _on_mask_selected(id: int):
 	print(id)
 	var mask_path = get_mask_img(id)
 	$Character.put_mask_on(mask_path)
 	
-func get_character_sf(n: int):
-	return SPRITE_FRAMES_PATH + str(n) + '.tres'
+func get_character_img(group: int, n: int):
+	return CHARACTER_PATH + str(group) + str(n) + '.png'
 
-func get_polaroid_img(n: int):
-	return CHARACTER_PATH + str(n)  + '.png'
+func get_polaroid_img(group: int, n: int):
+	return CHARACTER_PATH + str(group) + str(n) + '.png'
 
 func get_mask_img(n: int):
 	return MASK_PATH + str(n) + '.png'

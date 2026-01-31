@@ -20,5 +20,3 @@ texture = ExtResource("2_eaq8r")
 position = Vector2(1400, 400)
 
 [node name="Character" parent="." unique_id=521361232 instance=ExtResource("4_eaq8r")]
-position = Vector2(960, 450)
-scale = Vector2(1.7, 1.7)

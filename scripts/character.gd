@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var frame_path: String
+@export var face_path: String
 
 func _ready() -> void:
 	show()
@@ -20,8 +20,4 @@ func take_mask_off(): #When the player guesses right or wrong for the second tim
 	$Mask.hide()
 
 func set_sprite():
-	if frame_path:
-		print(frame_path)
-		$AnimatedSprite2D.sprite_frames = load(frame_path)
-		$AnimatedSprite2D.play()
-	
+	$Face.texture = load(face_path)
