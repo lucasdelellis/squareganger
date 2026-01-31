@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wrkmc5mq5jic" path="res://scripts/character.gd" id="1_rkhd4"]
 [ext_resource type="SpriteFrames" uid="uid://bopyin13kyjre" path="res://assets/sprite-frames/sf1.tres" id="2_lrhn5"]
-[ext_resource type="Script" path="res://scenes/mask.gd" id="3_lrhn5"]
+[ext_resource type="Script" uid="uid://8evsidxapsvr" path="res://scripts/character_mask.gd" id="3_lrhn5"]
 
 [node name="Character" type="Node2D" unique_id=521361232]
 script = ExtResource("1_rkhd4")

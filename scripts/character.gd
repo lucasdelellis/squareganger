@@ -15,7 +15,7 @@ func put_mask_on (mask_path: String): #Changes masks
 	$Mask.texture = load(mask_path)
 	
 func take_mask_off(): #When the player guesses right or wrong for the second time
-	$Maks.fade_out()
+	$Mask.fade_out()
 	#TO DO: add a timer for the fade_out
 	$Mask.hide()
 
