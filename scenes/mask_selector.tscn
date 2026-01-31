@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ban4auhhuunh2"]
 
-[ext_resource type="Script" uid="uid://bemtrucknqqbf" path="res://scripts/mask_selector.gd" id="1_rev3u"]
+[ext_resource type="Script" path="res://scripts/mask_selector.gd" id="1_rev3u"]
 [ext_resource type="Texture2D" uid="uid://em4pw5brnlrk" path="res://assets/ui/mask_selector_background.png" id="2_tqb7k"]
 
 [node name="MaskSelector" type="TextureRect" unique_id=1976502493]

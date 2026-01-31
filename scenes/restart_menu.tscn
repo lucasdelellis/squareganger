@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://xw4fcnoof3ui"]
+
+[ext_resource type="Script" uid="uid://damrtl5qopciu" path="res://scripts/restart_menu.gd" id="1_bxhk3"]
+[ext_resource type="Texture2D" uid="uid://cgk4ywpl5twee" path="res://assets/ui/background.png" id="1_jsjm1"]
+[ext_resource type="FontFile" uid="uid://bl1j2j0d68rmr" path="res://assets/fonts/Bungee-Regular.ttf" id="2_ixg4b"]
+[ext_resource type="PackedScene" uid="uid://ban4auhhuunh2" path="res://scenes/mask_selector.tscn" id="4_umyh0"]
+
+[node name="RestartMenu" type="Node" unique_id=891293726]
+script = ExtResource("1_bxhk3")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1119825395]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_jsjm1")
+
+[node name="MaskSelector" parent="." unique_id=93039829 instance=ExtResource("4_umyh0")]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Score" type="Label" parent="." unique_id=1019938793]
+offset_left = 600.0
+offset_top = 150.0
+offset_right = 865.0
+offset_bottom = 243.0
+theme_override_fonts/font = ExtResource("2_ixg4b")
+theme_override_font_sizes/font_size = 70
+text = "Score:"
+
+[node name="RestartButton" type="Button" parent="." unique_id=1780164072]
+custom_minimum_size = Vector2(400, 150)
+offset_left = 1378.0
+offset_top = 856.0
+offset_right = 1778.0
+offset_bottom = 1006.0
+theme_override_fonts/font = ExtResource("2_ixg4b")
+theme_override_font_sizes/font_size = 70
+text = "RESTART"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

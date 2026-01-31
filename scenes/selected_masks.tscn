@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://vk3yrebh1gh7"]
+
+[ext_resource type="Texture2D" uid="uid://em4pw5brnlrk" path="res://assets/ui/mask_selector_background.png" id="1_fueqg"]
+[ext_resource type="Texture2D" uid="uid://brqh8belnbhe3" path="res://assets/masks/m0.png" id="2_pw6g3"]
+[ext_resource type="Script" uid="uid://dwq3oifw05x0l" path="res://scripts/selected_masks.gd" id="2_vb1t2"]
+
+[node name="SelectedMasks" type="TextureRect" unique_id=60621812]
+offset_top = -262.0
+offset_right = 714.0
+offset_bottom = 763.0
+texture = ExtResource("1_fueqg")
+expand_mode = 4
+script = ExtResource("2_vb1t2")
+
+[node name="Mask1" type="TextureRect" parent="." unique_id=903322508]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 800.0
+offset_right = 460.0
+offset_bottom = 1100.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_pw6g3")
+
+[node name="Mask2" type="TextureRect" parent="." unique_id=1646111289]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 800.0
+offset_right = 700.0
+offset_bottom = 1100.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_pw6g3")

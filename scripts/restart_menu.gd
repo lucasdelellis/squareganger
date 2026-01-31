@@ -1,0 +1,40 @@
+extends Node
+
+var MAIN_SCENE = preload("res://scenes/game_manager.tscn")
+const MASK_PATH = 'res://assets/masks/m'
+var player_masks: Array[int] = GameState.masks
+var selected_masks : Array[int] = [1,2] 
+
+func _ready() -> void:
+	set_masks()
+
+func _process(delta: float) -> void:
+	pass
+
+func set_masks():
+	var masks = []
+	print(player_masks)
+	for mask_id in player_masks:
+		masks.append({"maskId": mask_id, "imagePath": get_mask_img(mask_id)})
+	print(masks)	
+	$MaskSelector.render_masks(masks)
+	$MaskSelector.mask_selected.connect(_on_mask_selected)
+
+func _on_restart_button_pressed() -> void:
+	print("Back to main")
+	get_tree().change_scene_to_packed(MAIN_SCENE)
+	
+func _on_mask_selected(id: int):
+	print(id)
+	var mask_path = get_mask_img(id)
+	#Mask selection
+	if GameState.masks.has(id):
+		GameState.masks.erase(id)
+		$SelectedMasks.eliminate_mask(id)
+	else:
+		if GameState.masks.size()<2:
+			GameState.masks.append(id)
+			$SelectedMasks.set_mask(id)
+	
+func get_mask_img(n: int):
+	return MASK_PATH + str(n) + '.png'
