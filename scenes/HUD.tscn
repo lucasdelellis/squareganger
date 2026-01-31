@@ -5,8 +5,6 @@
 [node name="Hud" type="CanvasLayer" unique_id=194243237]
 
 [node name="MaskSelector" parent="." unique_id=93039829 instance=ExtResource("1_qpvh6")]
-offset_left = 318.0
-offset_top = 779.0
-offset_right = -228.0
-offset_bottom = -50.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 metadata/_edit_use_anchors_ = true
