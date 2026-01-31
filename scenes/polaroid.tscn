@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://dhg7pf7u4kp6x"]
 
 [ext_resource type="Script" uid="uid://b6cds14r4ayol" path="res://scripts/polaroid.gd" id="1_q7e2x"]
-[ext_resource type="Texture2D" uid="uid://brqh8belnbhe3" path="res://assets/masks/m0.png" id="2_ogpdo"]
-[ext_resource type="Texture2D" uid="uid://mornkesdgemt" path="res://assets/characters/c1.png" id="3_mo0ir"]
 
 [node name="Polaroid" type="Node2D" unique_id=1189214297]
 script = ExtResource("1_q7e2x")
@@ -11,9 +9,7 @@ metadata/_edit_group_ = true
 [node name="TextureRect" type="TextureRect" parent="." unique_id=554737946]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_ogpdo")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1407304413]
 position = Vector2(150, 130)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("3_mo0ir")

@@ -11,7 +11,5 @@ func _process(delta: float) -> void:
 	pass
 
 func set_sprite():
-	if texture_path:
-		print(texture_path)
-		$Sprite2D.texture = load(texture_path)
+	$Sprite2D.texture = load(texture_path)
 			
