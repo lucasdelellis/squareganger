@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://da61mdu8xwye0"]
+
+[ext_resource type="Script" uid="uid://bicgcjuphgt0y" path="res://scripts/mask.gd" id="1_mask"]
+
+[node name="Mask" type="TextureButton" unique_id=245791446]
+offset_right = 50.0
+offset_bottom = 50.0
+script = ExtResource("1_mask")
+
+[connection signal="mask_selected" from="." to="." method="_on_mask_selected"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

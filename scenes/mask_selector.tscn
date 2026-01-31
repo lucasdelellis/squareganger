@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://ban4auhhuunh2"]
+
+[ext_resource type="Script" uid="uid://bemtrucknqqbf" path="res://mask_selector.gd" id="1_rev3u"]
+[ext_resource type="Texture2D" uid="uid://ng6rwwvns51" path="res://assets/mask_selector_image.png" id="1_tqb7k"]
+
+[node name="MaskSelector" type="Control" unique_id=93039829]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -546.0
+offset_bottom = -829.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rev3u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=137452152]
+position = Vector2(684, 126)
+texture = ExtResource("1_tqb7k")
+
+[node name="MaskContainer" type="GridContainer" parent="." unique_id=475199879]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4

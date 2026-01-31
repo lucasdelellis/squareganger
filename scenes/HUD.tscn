@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bolm7274qvq8u"]
+
+[ext_resource type="PackedScene" uid="uid://ban4auhhuunh2" path="res://scenes/mask_selector.tscn" id="1_qpvh6"]
+
+[node name="Hud" type="CanvasLayer" unique_id=194243237]
+
+[node name="MaskSelector" parent="." unique_id=93039829 instance=ExtResource("1_qpvh6")]
+offset_left = 318.0
+offset_top = 779.0
+offset_right = -228.0
+offset_bottom = -50.0
+metadata/_edit_use_anchors_ = true
