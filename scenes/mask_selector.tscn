@@ -19,6 +19,7 @@ position = Vector2(684, 126)
 texture = ExtResource("1_tqb7k")
 
 [node name="MaskContainer" type="GridContainer" parent="." unique_id=475199879]
+layout_direction = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -31,4 +32,5 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/h_separation = 50
 columns = 4
