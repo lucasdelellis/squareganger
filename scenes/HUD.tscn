@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bolm7274qvq8u"]
 
 [ext_resource type="PackedScene" uid="uid://ban4auhhuunh2" path="res://scenes/mask_selector.tscn" id="1_qpvh6"]
+[ext_resource type="PackedScene" uid="uid://cvlvvpcx6742v" path="res://scenes/choose_buttons.tscn" id="2_fls4u"]
 
 [node name="Hud" type="CanvasLayer" unique_id=194243237]
 
@@ -8,3 +9,7 @@
 offset_right = 1920.0
 offset_bottom = 1080.0
 metadata/_edit_use_anchors_ = true
+
+[node name="ChooseButtons" parent="." unique_id=299698235 instance=ExtResource("2_fls4u")]
+offset_right = 1920.0
+offset_bottom = 1080.0

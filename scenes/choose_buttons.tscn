@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cvlvvpcx6742v"]
+
+[ext_resource type="Texture2D" uid="uid://bfy32aystl5g0" path="res://assets/ui/choose_buttons.png" id="1_cyy0o"]
+[ext_resource type="Script" uid="uid://blk05wnj7yo2h" path="res://scripts/choose_buttons.gd" id="2_6dnyg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6dnyg"]
+radius = 90.0
+
+[node name="ChooseButtons" type="TextureRect" unique_id=299698235]
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource("1_cyy0o")
+stretch_mode = 1
+script = ExtResource("2_6dnyg")
+
+[node name="Accept" type="TouchScreenButton" parent="." unique_id=407431399]
+position = Vector2(1489, 911)
+shape = SubResource("CircleShape2D_6dnyg")
+
+[node name="Reject" type="TouchScreenButton" parent="." unique_id=1326434067]
+position = Vector2(1715, 911)
+shape = SubResource("CircleShape2D_6dnyg")
+
+[connection signal="pressed" from="Accept" to="." method="_on_accept_pressed"]
+[connection signal="pressed" from="Reject" to="." method="_on_reject_pressed"]

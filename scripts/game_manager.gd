@@ -16,8 +16,12 @@ func start_game() -> void:
 	var masks = []
 	for mask_id in player_masks:
 		masks.append({"maskId": mask_id, "imagePath": get_mask_img(mask_id)})
+	
 	$Hud/MaskSelector.render_masks(masks)
 	$Hud/MaskSelector.mask_selected.connect(_on_mask_selected)
+	$Hud/ChooseButtons.accept_pressed.connect(_on_accept_pressed)
+	$Hud/ChooseButtons.reject_pressed.connect(_on_reject_pressed)
+	
 	choose_characters() #chooses and assigns to the childs	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,3 +56,9 @@ func get_polaroid_img(n: int):
 
 func get_mask_img(n: int):
 	return MASK_PATH + str(n) + '.png'
+
+func _on_accept_pressed():
+	print("accept")
+	
+func _on_reject_pressed():
+	print("reject")
