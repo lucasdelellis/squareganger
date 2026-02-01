@@ -47,3 +47,9 @@ func _pulse_animation() -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(0.9, 0.9), 0.05)
 	tween.tween_property(self, "scale", Vector2(1.1, 1.1), 0.05)
+
+func _on_activate_masks() -> void:
+	mouse_filter = Control.MOUSE_FILTER_STOP
+
+func _on_deactivate_masks() -> void:
+	mouse_filter = Control.MOUSE_FILTER_IGNORE

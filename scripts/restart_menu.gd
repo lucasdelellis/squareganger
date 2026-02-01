@@ -16,10 +16,8 @@ func _process(delta: float) -> void:
 
 func set_masks():
 	var masks = []
-	print(player_masks)
 	for mask_id in player_masks:
 		masks.append({"maskId": mask_id, "imagePath": get_mask_img(mask_id)})
-	print(masks)	
 	$MaskSelector.render_masks(masks)
 	$MaskSelector.mask_selected.connect(_on_mask_selected)
 
@@ -29,12 +27,10 @@ func reset_game_state():
 	GameState.obtained_masks = selected_masks
 
 func _on_restart_button_pressed() -> void:
-	print("Back to main")
 	reset_game_state()
 	get_tree().change_scene_to_file(MAIN_SCENE)
 	
 func _on_mask_selected(id: int): #it may work
-	print(id)
 	var mask_path = get_mask_img(id)
 	#Mask selection
 	if GameState.masks.has(id):

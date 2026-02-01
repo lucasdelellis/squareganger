@@ -1,6 +1,8 @@
 extends Control
 
 signal mask_selected(id: int)
+signal deactivate_masks
+signal activate_masks
 
 @onready var mask_container: GridContainer = $MaskContainer
 @onready var left_arrow: TextureButton = $LeftArrow
@@ -11,6 +13,13 @@ const MAX_VISIBLE_MASKS = 3
 
 var all_masks_data: Array = []
 var current_offset: int = 0
+var max_mask_selections = 3
+var last_mask_selected 
+	
+func _on_activate_masks():
+	max_mask_selections = 3
+	last_mask_selected = 0
+	activate_masks.emit()
 
 func render_masks(mask_data: Array) -> void:
 	all_masks_data = mask_data
@@ -27,6 +36,10 @@ func update_display() -> void:
 		
 		var mask_instance = MASK_SCENE.instantiate()
 		mask_container.add_child(mask_instance)
+		
+		#connect signals
+		activate_masks.connect(mask_instance._on_activate_masks)
+		deactivate_masks.connect(mask_instance._on_deactivate_masks)
 		
 		var mask_id: int = data.get("maskId", -1)
 		var image_path: String = data.get("imagePath", "")
@@ -56,9 +69,14 @@ func scroll_right() -> void:
 func clear_masks() -> void:
 	for child in mask_container.get_children():
 		child.queue_free()
-		
+
 func _on_mask_selected(id: int):
-	mask_selected.emit(id)
+	if max_mask_selections > 0 and last_mask_selected != id: 
+		max_mask_selections -= 1
+		last_mask_selected = id
+		mask_selected.emit(id)
+	elif max_mask_selections == 0:
+		deactivate_masks.emit()
 
 func _on_left_arrow_pressed() -> void:
 	scroll_left()

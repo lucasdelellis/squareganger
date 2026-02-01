@@ -14,9 +14,11 @@ var player_masks: Array[int] = GameState.masks
 var right_character
 var random_character
 
-# Called when the node enters the scene tree for the first time.
+signal activate_masks()
+
 func _ready() -> void:
 	start_game()
+	activate_masks.connect(($Hud/MaskSelector)._on_activate_masks)
 
 func start_game() -> void:
 	render_masks()
@@ -31,7 +33,7 @@ func choose_characters():
 	var n = int(randf() * CHARACTERS_AMOUNT) + 1 #number of faces
 	right_character = str(group) + str(n)
 	$Polaroid.texture_path = get_polaroid_img(group, n)
-	print("Chosen polaroid: ", group, " ", n)
+	#print("Chosen polaroid: ", group, " ", n)
 	var prob_same_char = randf()  #probability of being the same character
 	random_character = str(group)
 
@@ -40,8 +42,8 @@ func choose_characters():
 
 	$Character.face_path = get_character_img(group, n)
 	random_character += str(n)
-	print("Chosen character: ", group, " ", n)
-	print(right_character, " ", random_character, " ", right_character == random_character)
+	#print("Chosen character: ", group, " ", n)
+	#print(right_character, " ", random_character, " ", right_character == random_character)
 	$Polaroid.set_sprite()
 	$Character.set_sprite()
 
@@ -61,29 +63,42 @@ func get_mask_img(n: int):
 
 func _on_accept_pressed():
 	if right_character == random_character:
-		print("Correct guess")
 		right_guess()	
 	else:
 		wrong_guess()
+	activate_masks.emit()
 	
 func _on_reject_pressed():
 	if right_character != random_character:
-		print("Correct guess")
 		right_guess()
 	else:
 		wrong_guess()
+	activate_masks.emit()
 		
 func right_guess():
 	GameState.score += 1000
 	$Hud/Score.text = str(GameState.score)
+	#add animation of right guess (fading mask and tumb up)
+	#right_animation()
 	check_mask_unlocking()
 	choose_characters()
 	$Character.put_mask_on(MASK_PATH+'0.png')
-	print(GameState.score)
 	
 func wrong_guess():
-	print("Wrong guess")
+	#add animation of wrong guess (fading mask and tumb down)
 	get_tree().change_scene_to_packed(RESTART_SCENE)
+	
+func right_animation():
+	var timer = Timer.new()
+	timer.wait_time = 1.0
+	timer.one_shot = true
+	timer.timeout.connect(_on_timer_timeout)
+	add_child(timer)
+	timer.start()
+
+func _on_timer_timeout():
+	print("hola desde el timeout")
+	
 func check_mask_unlocking():
 	# TODO: Check unlocking criteria
 	if GameState.score % 3000 == 0:
