@@ -84,6 +84,7 @@ func right_guess():
 func wrong_guess():
 	print("Wrong guess")
 	get_tree().change_scene_to_packed(RESTART_SCENE)
+	
 func check_mask_unlocking():
 	# TODO: Check unlocking criteria
 	if GameState.score % 3000 == 0:
