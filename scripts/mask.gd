@@ -5,8 +5,8 @@ signal mask_selected(mask_id: int)
 var mask_id: int = -1
 
 func _ready() -> void:
-	custom_minimum_size = Vector2(100, 100)
-	pivot_offset = Vector2(50, 50)
+	custom_minimum_size = Vector2(200, 200)
+	pivot_offset = Vector2(100, 100)
 	expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	

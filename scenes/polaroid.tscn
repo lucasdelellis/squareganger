@@ -1,15 +1,14 @@
 [gd_scene format=3 uid="uid://dhg7pf7u4kp6x"]
 
+[ext_resource type="Texture2D" uid="uid://cwk31osvmftky" path="res://assets/polaroids/c21.png" id="1_0guuu"]
 [ext_resource type="Script" uid="uid://b6cds14r4ayol" path="res://scripts/polaroid.gd" id="1_q7e2x"]
 
-[node name="Polaroid" type="Node2D" unique_id=1189214297]
+[node name="Polaroid" type="TextureRect" unique_id=1978563638]
+offset_left = 1300.0
+offset_top = 145.0
+offset_right = 1891.0
+offset_bottom = 823.0
+texture = ExtResource("1_0guuu")
+stretch_mode = 2
 script = ExtResource("1_q7e2x")
 metadata/_edit_group_ = true
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=554737946]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1407304413]
-position = Vector2(150, 130)
-scale = Vector2(0.7, 0.7)

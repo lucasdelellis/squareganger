@@ -3,10 +3,13 @@
 [ext_resource type="Script" uid="uid://bicgcjuphgt0y" path="res://scripts/mask.gd" id="1_mask"]
 
 [node name="Mask" type="TextureRect" unique_id=1976118269]
+custom_minimum_size = Vector2(100, 100)
 offset_right = 300.0
 offset_bottom = 300.0
 scale = Vector2(0.1, 0.1)
-pivot_offset = Vector2(15, 15)
+pivot_offset = Vector2(50, 50)
+expand_mode = 1
+stretch_mode = 5
 script = ExtResource("1_mask")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
