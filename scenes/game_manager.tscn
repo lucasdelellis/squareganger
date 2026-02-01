@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://3d238tggidn4" path="res://scenes/character.tscn" id="4_eaq8r"]
 [ext_resource type="PackedScene" uid="uid://ct4jql0hy73xt" path="res://scenes/circular_timer.tscn" id="5_ternb"]
 [ext_resource type="PackedScene" uid="uid://bxxxboge22p3f" path="res://scenes/right_answer_animation.tscn" id="7_q8mjp"]
+[ext_resource type="PackedScene" uid="uid://dgyiuf0i5yd2p" path="res://scenes/WrongAnswerAnimation.tscn" id="8_jdad8"]
 
 [node name="GameManager" type="Node" unique_id=654793040]
 script = ExtResource("1_hwd4i")
@@ -26,3 +27,5 @@ visible = false
 [node name="Character" parent="." unique_id=521361232 instance=ExtResource("4_eaq8r")]
 
 [node name="RightAnswerAnimation" parent="." unique_id=734717961 instance=ExtResource("7_q8mjp")]
+
+[node name="WrongAnswerAnimation" parent="." unique_id=174398532 instance=ExtResource("8_jdad8")]

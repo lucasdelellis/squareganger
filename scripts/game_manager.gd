@@ -94,7 +94,8 @@ func right_guess():
 	apply_difficulty()
 	
 func wrong_guess():
-	#add animation of wrong guess (fading mask and tumb down)
+	$WrongAnswerAnimation.play_animation()
+	await $WrongAnswerAnimation.animation_finished
 	get_tree().change_scene_to_packed(RESTART_SCENE)
 
 
