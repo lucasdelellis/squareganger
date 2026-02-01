@@ -1,48 +1,57 @@
 [gd_scene format=3 uid="uid://xw4fcnoof3ui"]
 
 [ext_resource type="Script" uid="uid://damrtl5qopciu" path="res://scripts/restart_menu.gd" id="1_bxhk3"]
-[ext_resource type="Texture2D" uid="uid://cgk4ywpl5twee" path="res://assets/ui/background.png" id="1_jsjm1"]
 [ext_resource type="FontFile" uid="uid://bl1j2j0d68rmr" path="res://assets/fonts/Bungee-Regular.ttf" id="2_ixg4b"]
-[ext_resource type="PackedScene" uid="uid://ban4auhhuunh2" path="res://scenes/mask_selector.tscn" id="4_umyh0"]
+[ext_resource type="Texture2D" uid="uid://cmihp28lsllhn" path="res://assets/ui/restart_screen.png" id="2_umyh0"]
+[ext_resource type="FontFile" uid="uid://c4c4rxxhwbmjj" path="res://assets/fonts/Squarely.ttf" id="3_vri4p"]
+[ext_resource type="PackedScene" uid="uid://bm2ipvmt2w58o" path="res://scenes/unlocked_mask_selector.tscn" id="6_vri4p"]
 
 [node name="RestartMenu" type="Node" unique_id=891293726]
 script = ExtResource("1_bxhk3")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1119825395]
+[node name="Background" type="TextureRect" parent="." unique_id=1119825395]
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("1_jsjm1")
-
-[node name="ScoreTitle" type="Label" parent="." unique_id=1019938793]
-offset_left = 600.0
-offset_top = 150.0
-offset_right = 865.0
-offset_bottom = 243.0
-theme_override_fonts/font = ExtResource("2_ixg4b")
-theme_override_font_sizes/font_size = 70
-text = "Score:"
+texture = ExtResource("2_umyh0")
 
 [node name="Score" type="Label" parent="." unique_id=173121085]
-offset_left = 1000.0
-offset_top = 150.0
-offset_right = 1051.0
-offset_bottom = 243.0
-theme_override_fonts/font = ExtResource("2_ixg4b")
-theme_override_font_sizes/font_size = 70
+offset_left = 330.0
+offset_top = -3.0
+offset_right = 381.0
+offset_bottom = 102.0
+theme_override_fonts/font = ExtResource("3_vri4p")
+theme_override_font_sizes/font_size = 100
 text = "0"
-
-[node name="MaskSelector" parent="." unique_id=93039829 instance=ExtResource("4_umyh0")]
-offset_right = 1920.0
-offset_bottom = 1080.0
+horizontal_alignment = 2
 
 [node name="RestartButton" type="Button" parent="." unique_id=1780164072]
 custom_minimum_size = Vector2(400, 150)
-offset_left = 1378.0
-offset_top = 856.0
-offset_right = 1778.0
-offset_bottom = 1006.0
+offset_left = 1386.0
+offset_top = 499.0
+offset_right = 1877.0
+offset_bottom = 671.0
 theme_override_fonts/font = ExtResource("2_ixg4b")
 theme_override_font_sizes/font_size = 70
-text = "RESTART"
+flat = true
+
+[node name="UnlockedMaskSelector" parent="." unique_id=1059661255 instance=ExtResource("6_vri4p")]
+
+[node name="LeftMask" type="TextureRect" parent="." unique_id=395663382]
+offset_left = 137.0
+offset_top = 215.99994
+offset_right = 572.95056
+offset_bottom = 574.67285
+rotation = -0.10471976
+expand_mode = 2
+stretch_mode = 4
+
+[node name="RightMask" type="TextureRect" parent="." unique_id=997739712]
+offset_left = 817.0001
+offset_top = 167.0
+offset_right = 1252.9507
+offset_bottom = 525.6729
+rotation = 0.12217305
+expand_mode = 2
+stretch_mode = 4
 
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

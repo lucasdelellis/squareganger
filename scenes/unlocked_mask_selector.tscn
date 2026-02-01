@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bm2ipvmt2w58o"]
+
+[ext_resource type="Script" uid="uid://cma5tgkwsk3fd" path="res://scripts/unlocked_mask_selector.gd" id="1_kvlc5"]
+[ext_resource type="Texture2D" uid="uid://caumq8dnypyy5" path="res://assets/ui/mask_selector_arrows.png" id="1_xe1fa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvlc5"]
+atlas = ExtResource("1_xe1fa")
+region = Rect2(83, 855, 84, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6ulu"]
+atlas = ExtResource("1_xe1fa")
+region = Rect2(1265, 843, 92, 135)
+
+[node name="UnlockedMaskSelector" type="Node" unique_id=1059661255]
+script = ExtResource("1_kvlc5")
+
+[node name="LeftArrow" type="TextureButton" parent="." unique_id=553597090]
+offset_left = 150.0
+offset_top = 860.0
+offset_right = 2070.0
+offset_bottom = 1940.0
+texture_normal = SubResource("AtlasTexture_kvlc5")
+
+[node name="MaskContainer" type="GridContainer" parent="." unique_id=687374771]
+layout_direction = 2
+offset_left = 280.0
+offset_top = 825.0
+offset_right = 1080.0
+offset_bottom = 1025.0
+theme_override_constants/h_separation = 100
+columns = 3
+
+[node name="RightArrow" type="TextureButton" parent="." unique_id=299488089]
+offset_left = 1110.0
+offset_top = 860.0
+offset_right = 1202.0
+offset_bottom = 995.0
+texture_normal = SubResource("AtlasTexture_b6ulu")
+
+[connection signal="pressed" from="LeftArrow" to="." method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="RightArrow" to="." method="_on_right_arrow_pressed"]
