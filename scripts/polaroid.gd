@@ -1,4 +1,4 @@
-extends Node2D
+extends TextureRect
 
 @export var texture_path: String
 
@@ -11,5 +11,5 @@ func _process(delta: float) -> void:
 	pass
 
 func set_sprite():
-	$Sprite2D.texture = load(texture_path)
+	texture = load(texture_path)
 			

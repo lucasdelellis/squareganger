@@ -4,6 +4,7 @@ const MAIN_SCENE = preload("res://scenes/game_manager.tscn")
 const GROUP_AMOUNT = 3
 const CHARACTERS_AMOUNT = 3
 const CHARACTER_PATH = 'res://assets/characters/c'
+const POLAROID_PATH = 'res://assets/polaroids/c'
 const MASK_PATH = 'res://assets/masks/m'
 
 var player_masks: Array[int] = GameState.masks
@@ -53,7 +54,7 @@ func get_character_img(group: int, n: int):
 	return CHARACTER_PATH + str(group) + str(n) + '.png'
 
 func get_polaroid_img(group: int, n: int):
-	return CHARACTER_PATH + str(group) + str(n) + '.png'
+	return POLAROID_PATH + str(group) + str(n) + '.png'
 
 func get_mask_img(n: int):
 	return MASK_PATH + str(n) + '.png'
