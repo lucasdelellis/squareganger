@@ -1,12 +1,15 @@
 extends Node
 
 const MAIN_SCENE = preload("res://scenes/game_manager.tscn")
+const RESTART_SCENE = preload("res://scenes/restart_menu.tscn")
 const GROUP_AMOUNT = 3
 const CHARACTERS_AMOUNT = 3
 const CHARACTER_PATH = 'res://assets/characters/c'
 const MASK_PATH = 'res://assets/masks/m'
 
 var player_masks: Array[int] = [1, 2]
+var right_character
+var random_character
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,16 +34,19 @@ func _process(delta: float) -> void:
 func choose_characters():
 	var group = int(randf() * GROUP_AMOUNT) + 1 #number of groups
 	var n = int(randf() * CHARACTERS_AMOUNT) + 1 #number of faces
+	right_character = str(group) + str(n)
 	$Polaroid.texture_path = get_polaroid_img(group, n)
-	print("Chosen polaroid: ", n)
-	var n_char = randf()  #number of character
-	print("Right?: ", n_char < 0.3)
-	if n_char < 0.3: 
-		$Character.face_path = get_character_img(group, n)
-	else:
-		n_char = int(randf() * CHARACTERS_AMOUNT) + 1 #small chances that the new character is the correct onee
-		$Character.face_path = get_character_img(group, n_char)
-		print("Wrong character: ", n_char)
+	print("Chosen polaroid: ", group, " ", n)
+	var prob_same_char = randf()  #probability of being the same character
+	random_character = str(group)
+
+	if prob_same_char > 0.3:
+		n = int(randf() * CHARACTERS_AMOUNT) + 1 #small chances that the new character is the correct onee	 
+
+	$Character.face_path = get_character_img(group, n)
+	random_character += str(n)
+	print("Chosen character: ", group, " ", n)
+	print(right_character, " ", random_character, " ", right_character == random_character)
 	$Polaroid.set_sprite()
 	$Character.set_sprite()
 
@@ -59,7 +65,28 @@ func get_mask_img(n: int):
 	return MASK_PATH + str(n) + '.png'
 
 func _on_accept_pressed():
-	print("accept")
+	if right_character == random_character:
+		#guessed correctly
+		print("Correct guess")
+		GameState.score += 1000	
+		right_guess()	
+	else:
+		print("Wrong guess")
+		get_tree().change_scene_to_packed(RESTART_SCENE)
+		#wrong
 	
 func _on_reject_pressed():
-	print("reject")
+	if right_character != random_character:
+		print("Correct guess")
+		right_guess()
+		#guessed correctly
+	else:
+		print("Wrong guess")
+		get_tree().change_scene_to_packed(RESTART_SCENE)
+		#wrong
+		
+func right_guess():
+	GameState.score += 1000
+	choose_characters()
+	$Character.put_mask_on(MASK_PATH+'0.png')
+	print(GameState.score)
