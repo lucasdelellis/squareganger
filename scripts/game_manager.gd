@@ -6,7 +6,7 @@ const CHARACTERS_AMOUNT = 3
 const CHARACTER_PATH = 'res://assets/characters/c'
 const MASK_PATH = 'res://assets/masks/m'
 
-var player_masks: Array[int] = [1, 2]
+var player_masks: Array[int] = GameState.masks
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
