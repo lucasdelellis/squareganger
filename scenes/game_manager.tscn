@@ -16,6 +16,6 @@ texture = ExtResource("2_eaq8r")
 
 [node name="Hud" parent="." unique_id=194243237 instance=ExtResource("2_glms7")]
 
-[node name="Polaroid" parent="." unique_id=1189214297 instance=ExtResource("3_oo155")]
+[node name="Polaroid" parent="Hud" unique_id=1189214297 instance=ExtResource("3_oo155")]
 
 [node name="Character" parent="." unique_id=521361232 instance=ExtResource("4_eaq8r")]
