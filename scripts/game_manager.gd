@@ -28,6 +28,8 @@ func start_game() -> void:
 	render_masks()
 	#restart values
 	$Hud/MaskSelector.max_mask_selections = 3
+	$Hud/MaskCounter/Label.text = str($Hud/MaskSelector.max_mask_selections)
+
 
 	#connect signals
 	$Hud/MaskSelector.mask_selected.connect(_on_mask_selected)
@@ -59,6 +61,7 @@ func choose_characters():
 func _on_mask_selected(id: int):
 	var mask_path = get_mask_img(id)
 	$Character.put_mask_on(mask_path)
+	$Hud/MaskCounter/Label.text = str($Hud/MaskSelector.max_mask_selections)
 	
 func get_character_img(group: int, n: int):
 	return CHARACTER_PATH + str(group) + str(n) + '.png'
@@ -90,6 +93,7 @@ func right_guess():
 	await $RightAnswerAnimation.animation_finished
 	check_mask_unlocking()
 	choose_characters()
+	$Hud/MaskCounter/Label.text = str($Hud/MaskSelector.max_mask_selections)
 	$Character.put_mask_on(MASK_PATH+'0.png')
 	apply_difficulty()
 	

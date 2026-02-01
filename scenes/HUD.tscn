@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ban4auhhuunh2" path="res://scenes/mask_selector.tscn" id="1_qpvh6"]
 [ext_resource type="PackedScene" uid="uid://cvlvvpcx6742v" path="res://scenes/choose_buttons.tscn" id="2_fls4u"]
 [ext_resource type="FontFile" uid="uid://bl1j2j0d68rmr" path="res://assets/fonts/Bungee-Regular.ttf" id="3_1etfg"]
+[ext_resource type="PackedScene" uid="uid://dsuk5ya1oreky" path="res://scenes/MaskCounter.tscn" id="4_7hsmw"]
 
 [node name="Hud" type="CanvasLayer" unique_id=194243237]
 
@@ -14,11 +15,16 @@ metadata/_edit_use_anchors_ = true
 [node name="ChooseButtons" parent="." unique_id=299698235 instance=ExtResource("2_fls4u")]
 
 [node name="Score" type="Label" parent="." unique_id=284766622]
-offset_left = 100.0
+offset_left = 50.0
 offset_top = 200.0
-offset_right = 173.0
+offset_right = 123.0
 offset_bottom = 332.0
 theme_override_fonts/font = ExtResource("3_1etfg")
 theme_override_font_sizes/font_size = 100
 text = "0"
-horizontal_alignment = 1
+
+[node name="MaskCounter" parent="." unique_id=309672378 instance=ExtResource("4_7hsmw")]
+offset_left = 50.0
+offset_top = 339.0
+offset_right = -1169.0
+offset_bottom = -166.0
