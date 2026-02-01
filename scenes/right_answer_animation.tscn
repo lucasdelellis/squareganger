@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://bxxxboge22p3f"]
+
+[ext_resource type="Script" uid="uid://dkr0wyjwtweug" path="res://scripts/right_answer_animation.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cl1o0dm5k2u5l" path="res://assets/ui/right_answer_logo.png" id="2_logo"]
+[ext_resource type="Texture2D" uid="uid://bulp4i5whkka4" path="res://assets/dark_circle_bg.svg" id="3_circle"]
+
+[sub_resource type="Animation" id="Animation_show"]
+resource_name = "show_right_answer"
+length = 1.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 2, 0.25, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(5, 5), Vector2(4.7, 4.7), Vector2(5, 5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1"]
+_data = {
+&"show_right_answer": SubResource("Animation_show")
+}
+
+[node name="RightAnswerAnimation" type="CanvasLayer" unique_id=1634559763]
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="." unique_id=887544638]
+modulate = Color(1, 1, 1, 0.8)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+pivot_offset = Vector2(256, 256)
+mouse_filter = 2
+texture = ExtResource("3_circle")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Logo" type="TextureRect" parent="." unique_id=327529833]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+pivot_offset = Vector2(64, 64)
+mouse_filter = 2
+texture = ExtResource("2_logo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1153270400]
+libraries/ = SubResource("AnimationLibrary_1")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

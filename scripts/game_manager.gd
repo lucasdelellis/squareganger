@@ -82,12 +82,12 @@ func _on_reject_pressed():
 	else:
 		wrong_guess()
 	activate_masks.emit()
-		
+
 func right_guess():
 	GameState.score += 1000
 	$Hud/Score.text = str(GameState.score)
-	#add animation of right guess (fading mask and tumb up)
-	#right_animation()
+	$RightAnswerAnimation.play_animation()
+	await $RightAnswerAnimation.animation_finished
 	check_mask_unlocking()
 	choose_characters()
 	$Character.put_mask_on(MASK_PATH+'0.png')
@@ -96,14 +96,7 @@ func right_guess():
 func wrong_guess():
 	#add animation of wrong guess (fading mask and tumb down)
 	get_tree().change_scene_to_packed(RESTART_SCENE)
-	
-func right_animation():
-	var timer = Timer.new()
-	timer.wait_time = 1.0
-	timer.one_shot = true
-	timer.timeout.connect(_on_timer_timeout)
-	add_child(timer)
-	timer.start()
+
 
 func _on_timer_timeout():
 	print("hola desde el timeout")
