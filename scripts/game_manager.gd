@@ -14,7 +14,7 @@ var player_masks: Array[int] = GameState.masks
 var right_character
 var random_character
 
-var difficulty = 4
+var difficulty = 1
 var time = 10
 
 signal activate_masks()
@@ -158,5 +158,5 @@ func polaroid_timer(time: int):
 	timer.start()
 
 func _on_polaroid_timeout():
-	$Polaroid.texture = load("res://assets/polaroids/c0.png") #la polaroid con la mascara	
-	pass
+	$Hud/Polaroid.texture_path = "res://assets/polaroids/c0.png"
+	$Hud/Polaroid.set_sprite()
