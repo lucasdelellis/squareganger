@@ -4,10 +4,12 @@ const MAIN_SCENE = preload("res://scenes/game_manager.tscn")
 const RESTART_SCENE = preload("res://scenes/restart_menu.tscn")
 const GROUP_AMOUNT = 3
 const CHARACTERS_AMOUNT = 3
+const MASKS_AMOUNT = 5
 const CHARACTER_PATH = 'res://assets/characters/c'
 const POLAROID_PATH = 'res://assets/polaroids/c'
 const MASK_PATH = 'res://assets/masks/m'
 
+# Array with current masks
 var player_masks: Array[int] = GameState.masks
 var right_character
 var random_character
@@ -17,21 +19,12 @@ func _ready() -> void:
 	start_game()
 
 func start_game() -> void:
-	var masks = []
-	for mask_id in player_masks:
-		masks.append({"maskId": mask_id, "imagePath": get_mask_img(mask_id)})
-	
-	$Hud/MaskSelector.render_masks(masks)
+	render_masks()
 	$Hud/MaskSelector.mask_selected.connect(_on_mask_selected)
 	$Hud/ChooseButtons.accept_pressed.connect(_on_accept_pressed)
 	$Hud/ChooseButtons.reject_pressed.connect(_on_reject_pressed)
 	
-	choose_characters() #chooses and assigns to the childs	
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-@warning_ignore("unused_parameter")
-func _process(delta: float) -> void:
-	pass
+	choose_characters() #chooses and assigns to the childs
 	
 func choose_characters():
 	var group = int(randf() * GROUP_AMOUNT) + 1 #number of groups
@@ -83,6 +76,7 @@ func _on_reject_pressed():
 func right_guess():
 	GameState.score += 1000
 	$Hud/Score.text = str(GameState.score)
+	check_mask_unlocking()
 	choose_characters()
 	$Character.put_mask_on(MASK_PATH+'0.png')
 	print(GameState.score)
@@ -90,3 +84,21 @@ func right_guess():
 func wrong_guess():
 	print("Wrong guess")
 	get_tree().change_scene_to_packed(RESTART_SCENE)
+func check_mask_unlocking():
+	# TODO: Check unlocking criteria
+	if GameState.score % 3000 == 0:
+		var found = len(GameState.obtained_masks) >= MASKS_AMOUNT
+		var new_mask
+		while not found:
+			new_mask = int(randf() * MASKS_AMOUNT) + 1
+			found = not GameState.obtained_masks.has(new_mask)
+		GameState.obtained_masks.append(new_mask)
+		player_masks.append(new_mask)
+		render_masks()
+		
+func render_masks():
+	var masks = []
+	for mask_id in player_masks:
+		masks.append({"maskId": mask_id, "imagePath": get_mask_img(mask_id)})
+	
+	$Hud/MaskSelector.render_masks(masks)
