@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bemtrucknqqbf" path="res://scripts/mask_selector.gd" id="1_rev3u"]
 [ext_resource type="Texture2D" uid="uid://em4pw5brnlrk" path="res://assets/ui/mask_selector_background.png" id="2_tqb7k"]
 [ext_resource type="Texture2D" uid="uid://caumq8dnypyy5" path="res://assets/ui/mask_selector_arrows.png" id="3_arrows"]
+[ext_resource type="AudioStream" uid="uid://btch58xpsr2kj" path="res://assets/music/button_sound.mp3" id="4_s2n83"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rev3u"]
 atlas = ExtResource("3_arrows")
@@ -24,6 +25,9 @@ offset_right = 2070.0
 offset_bottom = 1940.0
 texture_normal = SubResource("AtlasTexture_rev3u")
 
+[node name="Click" type="AudioStreamPlayer2D" parent="LeftArrow" unique_id=228242779]
+stream = ExtResource("4_s2n83")
+
 [node name="MaskContainer" type="GridContainer" parent="." unique_id=475199879]
 layout_direction = 2
 layout_mode = 0
@@ -41,6 +45,9 @@ offset_top = 860.0
 offset_right = 1253.0
 offset_bottom = 995.0
 texture_normal = SubResource("AtlasTexture_right")
+
+[node name="Click" type="AudioStreamPlayer2D" parent="RightArrow" unique_id=649952435]
+stream = ExtResource("4_s2n83")
 
 [connection signal="pressed" from="LeftArrow" to="." method="_on_left_arrow_pressed"]
 [connection signal="pressed" from="RightArrow" to="." method="_on_right_arrow_pressed"]

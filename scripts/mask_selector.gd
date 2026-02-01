@@ -79,7 +79,11 @@ func _on_mask_selected(id: int):
 		deactivate_masks.emit()
 
 func _on_left_arrow_pressed() -> void:
+	$LeftArrow/Click.play()
+	await get_tree().create_timer(0.2).timeout
 	scroll_left()
 
 func _on_right_arrow_pressed() -> void:
+	$RightArrow/Click.play()
+	await get_tree().create_timer(0.2).timeout
 	scroll_right()

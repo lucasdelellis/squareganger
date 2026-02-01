@@ -1,26 +1,50 @@
 [gd_scene format=3 uid="uid://cvlvvpcx6742v"]
 
-[ext_resource type="Texture2D" uid="uid://bfy32aystl5g0" path="res://assets/ui/choose_buttons.png" id="1_cyy0o"]
 [ext_resource type="Script" uid="uid://blk05wnj7yo2h" path="res://scripts/choose_buttons.gd" id="2_6dnyg"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_6dnyg"]
-radius = 90.0
+[ext_resource type="Texture2D" uid="uid://bjk34nr10c7xb" path="res://assets/ui/b_ok_0.png" id="3_e2288"]
+[ext_resource type="AudioStream" uid="uid://btch58xpsr2kj" path="res://assets/music/button_sound.mp3" id="4_e2288"]
+[ext_resource type="Texture2D" uid="uid://bh1i2aiml004j" path="res://assets/ui/b_ok_1.png" id="4_mr4so"]
+[ext_resource type="Texture2D" uid="uid://c10b7jithjlw1" path="res://assets/ui/b_no_0.png" id="5_5of3f"]
+[ext_resource type="Texture2D" uid="uid://2nett868euvk" path="res://assets/ui/b_no_2.png" id="6_bh1lr"]
 
 [node name="ChooseButtons" type="TextureRect" unique_id=299698235]
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
-texture = ExtResource("1_cyy0o")
 stretch_mode = 1
 script = ExtResource("2_6dnyg")
 
-[node name="Accept" type="TouchScreenButton" parent="." unique_id=407431399]
-position = Vector2(1489, 911)
-shape = SubResource("CircleShape2D_6dnyg")
+[node name="Accept" type="TextureButton" parent="." unique_id=1695436619]
+layout_mode = 0
+offset_left = 1389.0
+offset_top = 800.0
+offset_right = 1389.0
+offset_bottom = 800.0
+pivot_offset = Vector2(99.5, 108)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_e2288")
+texture_pressed = ExtResource("4_mr4so")
 
-[node name="Reject" type="TouchScreenButton" parent="." unique_id=1326434067]
-position = Vector2(1715, 911)
-shape = SubResource("CircleShape2D_6dnyg")
+[node name="Click" type="AudioStreamPlayer2D" parent="Accept" unique_id=14577086]
+stream = ExtResource("4_e2288")
 
+[node name="Reject" type="TextureButton" parent="." unique_id=1968234286]
+layout_mode = 0
+offset_left = 1615.0
+offset_top = 801.0
+offset_right = 1615.0
+offset_bottom = 801.0
+pivot_offset = Vector2(99.5, 108)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_5of3f")
+texture_pressed = ExtResource("6_bh1lr")
+
+[node name="Click" type="AudioStreamPlayer2D" parent="Reject" unique_id=189309858]
+stream = ExtResource("4_e2288")
+
+[connection signal="mouse_entered" from="Accept" to="." method="_on_accept_mouse_entered"]
+[connection signal="mouse_exited" from="Accept" to="." method="_on_accept_mouse_exited"]
 [connection signal="pressed" from="Accept" to="." method="_on_accept_pressed"]
+[connection signal="mouse_entered" from="Reject" to="." method="_on_reject_mouse_entered"]
+[connection signal="mouse_exited" from="Reject" to="." method="_on_reject_mouse_exited"]
 [connection signal="pressed" from="Reject" to="." method="_on_reject_pressed"]

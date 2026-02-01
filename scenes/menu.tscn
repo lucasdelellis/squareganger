@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://6tnjmrm8su58" path="res://assets/ui/intro_screen.png" id="2_g3eks"]
 [ext_resource type="FontFile" uid="uid://bl1j2j0d68rmr" path="res://assets/fonts/Bungee-Regular.ttf" id="3_con2f"]
 [ext_resource type="Texture2D" uid="uid://t0v25gxx1s8c" path="res://assets/ui/button.png" id="4_g3eks"]
+[ext_resource type="AudioStream" uid="uid://btch58xpsr2kj" path="res://assets/music/button_sound.mp3" id="5_13sgg"]
 [ext_resource type="FontFile" uid="uid://c4c4rxxhwbmjj" path="res://assets/fonts/Squarely.ttf" id="5_v86rl"]
 [ext_resource type="Texture2D" uid="uid://buyjr8ctu5g08" path="res://assets/ui/little_button .png" id="6_13sgg"]
+[ext_resource type="AudioStream" uid="uid://bpvjan7mtjall" path="res://assets/music/squareganger_music_track.wav" id="8_13sgg"]
 
 [node name="Menu" type="Node" unique_id=1189525608]
 script = ExtResource("1_yqeox")
@@ -27,16 +29,28 @@ offset_right = 200.0
 offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(295, 145)
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3_con2f")
 theme_override_font_sizes/font_size = 70
 icon = ExtResource("4_g3eks")
 flat = true
 
+[node name="Click" type="AudioStreamPlayer2D" parent="StartButton" unique_id=1125428406]
+stream = ExtResource("5_13sgg")
+
 [node name="TutorialButton" type="Button" parent="." unique_id=645105466]
-offset_left = 675.0
-offset_top = 700.0
-offset_right = 1259.0
-offset_bottom = 863.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.72400004
+anchor_right = 0.5
+anchor_bottom = 0.72400004
+offset_left = -285.0
+offset_top = -81.920044
+offset_right = 299.0
+offset_bottom = 81.079956
+pivot_offset = Vector2(292, 81.5)
+mouse_default_cursor_shape = 2
 icon = ExtResource("6_13sgg")
 flat = true
 
@@ -50,11 +64,21 @@ theme_override_fonts/font = ExtResource("5_v86rl")
 theme_override_font_sizes/font_size = 100
 text = "TUTORIAL"
 
+[node name="Click" type="AudioStreamPlayer2D" parent="TutorialButton" unique_id=675969822]
+stream = ExtResource("5_13sgg")
+
 [node name="CreditsButton" type="Button" parent="." unique_id=977422739]
-offset_left = 675.0
-offset_top = 870.0
-offset_right = 1259.0
-offset_bottom = 1033.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.88100004
+anchor_right = 0.5
+anchor_bottom = 0.88100004
+offset_left = -285.0
+offset_top = -81.48004
+offset_right = 299.0
+offset_bottom = 81.51996
+pivot_offset = Vector2(292, 81.5)
+mouse_default_cursor_shape = 2
 icon = ExtResource("6_13sgg")
 flat = true
 
@@ -68,6 +92,19 @@ theme_override_fonts/font = ExtResource("5_v86rl")
 theme_override_font_sizes/font_size = 100
 text = "CREDITS"
 
+[node name="Click" type="AudioStreamPlayer2D" parent="CreditsButton" unique_id=1194668233]
+stream = ExtResource("5_13sgg")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=458808224]
+stream = ExtResource("8_13sgg")
+autoplay = true
+
+[connection signal="mouse_entered" from="StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="StartButton" to="." method="_on_start_button_mouse_exited"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="mouse_entered" from="TutorialButton" to="." method="_on_tutorial_button_mouse_entered"]
+[connection signal="mouse_exited" from="TutorialButton" to="." method="_on_tutorial_button_mouse_exited"]
 [connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="mouse_entered" from="CreditsButton" to="." method="_on_credits_button_mouse_entered"]
+[connection signal="mouse_exited" from="CreditsButton" to="." method="_on_credits_button_mouse_exited"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]

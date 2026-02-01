@@ -160,3 +160,13 @@ func polaroid_timer(time: int):
 func _on_polaroid_timeout():
 	$Hud/Polaroid.texture_path = "res://assets/polaroids/c0.png"
 	$Hud/Polaroid.set_sprite()
+
+	
+func _on_exit_pressed() -> void:
+	get_tree().quit()
+
+func _on_exit_mouse_exited() -> void:	
+	$Exit.scale = Vector2(1.1,1.1)
+
+func _on_exit_mouse_entered() -> void:
+	$Exit.scale = Vector2(1.0,1.0)

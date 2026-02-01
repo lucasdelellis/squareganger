@@ -11,6 +11,8 @@ func _ready() -> void:
 	texture = load(PATH + str(0) + ".png")
 
 func _on_left_arrow_pressed() -> void:
+	$LeftArrow/Click.play()
+	await get_tree().create_timer(0.2).timeout
 	print(act)
 	if act == 0:
 		print("menu")
@@ -20,6 +22,8 @@ func _on_left_arrow_pressed() -> void:
 		texture = load(PATH + str(act) + ".png")
 
 func _on_right_arrow_pressed() -> void:
+	$RightArrow/Click.play()
+	await get_tree().create_timer(0.2).timeout
 	print(act)
 	if act == 3:
 		print("menu")
@@ -27,3 +31,16 @@ func _on_right_arrow_pressed() -> void:
 	else:
 		act +=1
 		texture = load(PATH + str(act) + ".png")
+
+
+func _on_left_arrow_mouse_entered() -> void:
+	$LeftArrow.scale = Vector2(1.1,1.1)
+
+func _on_left_arrow_mouse_exited() -> void:
+	$LeftArrow.scale = Vector2(1.0,1.0)
+
+func _on_right_arrow_mouse_entered() -> void:
+	$RightArrow.scale = Vector2(1.1,1.1)
+
+func _on_right_arrow_mouse_exited() -> void:
+	$RightArrow.scale = Vector2(1.0,1.0)

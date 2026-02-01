@@ -21,6 +21,8 @@ func reset_game_state():
 	GameState.obtained_masks = [left_mask, right_mask]
 
 func _on_restart_button_pressed() -> void:
+	$RestartButton/Click.play()
+	await get_tree().create_timer(0.2).timeout
 	if left_mask != -1 and right_mask != -1:
 		reset_game_state()
 		get_tree().change_scene_to_file(MAIN_SCENE)
@@ -44,3 +46,21 @@ func _on_mask_deselected(id: int):
 	elif right_mask == id:
 		$RightMask.texture = null
 		right_mask = -1
+
+
+func _on_restart_button_mouse_entered() -> void:
+	$RestartButton.scale = Vector2(1.1,1.1)
+
+func _on_restart_button_mouse_exited() -> void:
+	$RestartButton.scale = Vector2(1.0,1.0)
+	
+func _on_exit_pressed() -> void:
+	$Exit/Click.play()
+	await get_tree().create_timer(0.2).timeout
+	get_tree().quit()
+
+func _on_exit_mouse_entered() -> void:
+	$Exit.scale = Vector2(1.1,1.1)
+
+func _on_exit_mouse_exited() -> void:
+	$Exit.scale = Vector2(1.0,1.0)

@@ -4,7 +4,9 @@
 [ext_resource type="FontFile" uid="uid://bl1j2j0d68rmr" path="res://assets/fonts/Bungee-Regular.ttf" id="2_ixg4b"]
 [ext_resource type="Texture2D" uid="uid://cmihp28lsllhn" path="res://assets/ui/restart_screen.png" id="2_umyh0"]
 [ext_resource type="FontFile" uid="uid://c4c4rxxhwbmjj" path="res://assets/fonts/Squarely.ttf" id="3_vri4p"]
+[ext_resource type="Texture2D" uid="uid://cgb7bvklroomy" path="res://assets/ui/X.png" id="6_adobv"]
 [ext_resource type="PackedScene" uid="uid://bm2ipvmt2w58o" path="res://scenes/unlocked_mask_selector.tscn" id="6_vri4p"]
+[ext_resource type="AudioStream" uid="uid://btch58xpsr2kj" path="res://assets/music/button_sound.mp3" id="7_adobv"]
 
 [node name="RestartMenu" type="Node" unique_id=891293726]
 script = ExtResource("1_bxhk3")
@@ -30,9 +32,15 @@ offset_left = 1386.0
 offset_top = 499.0
 offset_right = 1877.0
 offset_bottom = 671.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_ixg4b")
 theme_override_font_sizes/font_size = 70
+toggle_mode = true
+button_pressed = true
 flat = true
+
+[node name="Click" type="AudioStreamPlayer2D" parent="RestartButton" unique_id=1121993544]
+stream = ExtResource("7_adobv")
 
 [node name="UnlockedMaskSelector" parent="." unique_id=1059661255 instance=ExtResource("6_vri4p")]
 
@@ -54,4 +62,21 @@ rotation = 0.12217305
 expand_mode = 2
 stretch_mode = 4
 
+[node name="Exit" type="Button" parent="." unique_id=1029455687]
+offset_left = 1761.0
+offset_top = 62.0
+offset_right = 1849.0
+offset_bottom = 151.0
+mouse_default_cursor_shape = 2
+icon = ExtResource("6_adobv")
+flat = true
+
+[node name="Click" type="AudioStreamPlayer2D" parent="Exit" unique_id=2080437077]
+stream = ExtResource("7_adobv")
+
+[connection signal="mouse_entered" from="RestartButton" to="." method="_on_restart_button_mouse_entered"]
+[connection signal="mouse_exited" from="RestartButton" to="." method="_on_restart_button_mouse_exited"]
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="mouse_entered" from="Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="mouse_exited" from="Exit" to="." method="_on_exit_mouse_exited"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
