@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cwk31osvmftky" path="res://assets/polaroids/c21.png" id="1_0guuu"]
 [ext_resource type="Script" uid="uid://b6cds14r4ayol" path="res://scripts/polaroid.gd" id="1_q7e2x"]
+[ext_resource type="PackedScene" path="res://scenes/circular_timer.tscn" id="3_mo0ir"]
+[ext_resource type="Texture2D" uid="uid://bfdstsgv3umdb" path="res://assets/ui/timer.png" id="4_mwpw1"]
 
 [node name="Polaroid" type="TextureRect" unique_id=1978563638]
 offset_left = 1300.0
@@ -11,4 +13,13 @@ offset_bottom = 823.0
 texture = ExtResource("1_0guuu")
 stretch_mode = 2
 script = ExtResource("1_q7e2x")
-metadata/_edit_group_ = true
+
+[node name="CircularTimer" parent="." unique_id=1825489191 instance=ExtResource("3_mo0ir")]
+visible = false
+layout_mode = 0
+offset_left = 30.999998
+offset_top = -46.0
+offset_right = 237.0
+offset_bottom = 161.0
+scale = Vector2(0.5, 0.5)
+texture_progress = ExtResource("4_mwpw1")
