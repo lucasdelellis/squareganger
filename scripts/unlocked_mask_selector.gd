@@ -1,6 +1,7 @@
 extends Node
 
-signal mask_selected()
+signal mask_selected(id: int)
+signal mask_deselected(id: int)
 
 @onready var mask_container: GridContainer = $MaskContainer
 @onready var left_arrow: TextureButton = $LeftArrow
@@ -60,11 +61,13 @@ func clear_masks() -> void:
 		child.queue_free()
 		
 func _on_mask_selected(id: int):
-	if not selected_masks.has(id) and len(selected_masks) < MAX_SELECTABLE_MASKS:
-		selected_masks.append(id)
-		GameState.masks.clear()
-		GameState.masks.append_array(selected_masks)
-		mask_selected.emit()
+	if selected_masks.has(id):
+		selected_masks.erase(id)
+		mask_deselected.emit(id)
+	else:
+		if len(selected_masks) < MAX_SELECTABLE_MASKS:
+			selected_masks.append(id)
+			mask_selected.emit(id)
 
 func _on_left_arrow_pressed() -> void:
 	scroll_left()

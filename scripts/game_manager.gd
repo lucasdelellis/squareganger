@@ -39,8 +39,8 @@ func choose_characters():
 	var group = int(randf() * GROUP_AMOUNT) + 1 #number of groups
 	var n = int(randf() * CHARACTERS_AMOUNT) + 1 #number of faces
 	right_character = str(group) + str(n)
-	$Polaroid.texture_path = get_polaroid_img(group, n)
-	#print("Chosen polaroid: ", group, " ", n)
+	$Hud/Polaroid.texture_path = get_polaroid_img(group, n)
+	print("Chosen polaroid: ", group, " ", n)
 	var prob_same_char = randf()  #probability of being the same character
 	random_character = str(group)
 
@@ -49,9 +49,9 @@ func choose_characters():
 
 	$Character.face_path = get_character_img(group, n)
 	random_character += str(n)
-	#print("Chosen character: ", group, " ", n)
-	#print(right_character, " ", random_character, " ", right_character == random_character)
-	$Polaroid.set_sprite()
+	print("Chosen character: ", group, " ", n)
+	print(right_character, " ", random_character, " ", right_character == random_character)
+	$Hud/Polaroid.set_sprite()
 	$Character.set_sprite()
 
 func _on_mask_selected(id: int):
