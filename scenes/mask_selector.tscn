@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ban4auhhuunh2"]
 
-[ext_resource type="Script" path="res://scripts/mask_selector.gd" id="1_rev3u"]
+[ext_resource type="Script" uid="uid://bemtrucknqqbf" path="res://scripts/mask_selector.gd" id="1_rev3u"]
 [ext_resource type="Texture2D" uid="uid://em4pw5brnlrk" path="res://assets/ui/mask_selector_background.png" id="2_tqb7k"]
 
 [node name="MaskSelector" type="TextureRect" unique_id=1976502493]
@@ -9,17 +9,10 @@ script = ExtResource("1_rev3u")
 
 [node name="MaskContainer" type="GridContainer" parent="." unique_id=475199879]
 layout_direction = 2
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -175.0
-offset_right = 20.0
-offset_bottom = -135.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/h_separation = 50
-columns = 4
+layout_mode = 0
+offset_left = 325.0
+offset_top = 825.0
+offset_right = 1125.0
+offset_bottom = 1025.0
+theme_override_constants/h_separation = 100
+columns = 3
