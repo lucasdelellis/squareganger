@@ -14,6 +14,9 @@ var player_masks: Array[int] = GameState.masks
 var right_character
 var random_character
 
+var difficulty = 4
+var time = 10
+
 signal activate_masks()
 
 func _ready() -> void:
@@ -22,6 +25,10 @@ func _ready() -> void:
 
 func start_game() -> void:
 	render_masks()
+	#restart values
+	$Hud/MaskSelector.max_mask_selections = 3
+
+	#connect signals
 	$Hud/MaskSelector.mask_selected.connect(_on_mask_selected)
 	$Hud/ChooseButtons.accept_pressed.connect(_on_accept_pressed)
 	$Hud/ChooseButtons.reject_pressed.connect(_on_reject_pressed)
@@ -110,6 +117,30 @@ func check_mask_unlocking():
 		GameState.obtained_masks.append(new_mask)
 		player_masks.append(new_mask)
 		render_masks()
+		adjust_difficulty()
+		
+func adjust_difficulty():
+	difficulty += 1
+	if difficulty < 3 and $Hud/MaskSelector.max_mask_selections > 0:
+		$Hud/MaskSelector.max_mask_selections -= 1
+	elif difficulty < 6:
+		#animation of left time could be added 
+		time -= 3
+		polaroid_timer(time)
+		pass
+	elif difficulty < 9:
+		#blurred face
+		#to start
+		$Hud/MaskSelector.max_mask_selections = 2
+		
+		pass
+	else:
+		#change characters from time to time, start at 10 seconds
+		#to start
+		if time > 5:
+			time -=1
+		else:
+			time /=2
 		
 func render_masks():
 	var masks = []
@@ -117,3 +148,15 @@ func render_masks():
 		masks.append({"maskId": mask_id, "imagePath": get_mask_img(mask_id)})
 	
 	$Hud/MaskSelector.render_masks(masks)
+
+func polaroid_timer(time: int):
+	var timer = Timer.new()
+	timer.wait_time = time
+	timer.one_shot = true
+	timer.timeout.connect(_on_polaroid_timeout)
+	add_child(timer)
+	timer.start()
+
+func _on_polaroid_timeout():
+	$Polaroid.texture = load("res://assets/polaroids/c0.png") #la polaroid con la mascara	
+	pass

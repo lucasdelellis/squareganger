@@ -13,7 +13,7 @@ const MAX_VISIBLE_MASKS = 3
 
 var all_masks_data: Array = []
 var current_offset: int = 0
-var max_mask_selections = 3
+@export var max_mask_selections = 3
 var last_mask_selected 
 	
 func _on_activate_masks():

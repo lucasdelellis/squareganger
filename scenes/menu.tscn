@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://ceefqraja1lnx"]
+[gd_scene format=3 uid="uid://y5oeuqp8xq4n"]
 
-[ext_resource type="Script" path="res://scripts/menu.gd" id="1_yqeox"]
+[ext_resource type="Script" uid="uid://3t3hm5kls1e1" path="res://scripts/menu.gd" id="1_yqeox"]
 [ext_resource type="Texture2D" uid="uid://cgk4ywpl5twee" path="res://assets/ui/background.png" id="2_vjb58"]
 [ext_resource type="FontFile" uid="uid://bl1j2j0d68rmr" path="res://assets/fonts/Bungee-Regular.ttf" id="3_con2f"]
 
