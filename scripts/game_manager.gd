@@ -2,6 +2,7 @@ extends Node
 
 const MAIN_SCENE = preload("res://scenes/game_manager.tscn")
 const RESTART_SCENE = preload("res://scenes/restart_menu.tscn")
+const TIMER_SCENE = preload("res://scenes/circular_timer.tscn")
 const GROUP_AMOUNT = 3
 const CHARACTERS_AMOUNT = 3
 const MASKS_AMOUNT = 5
@@ -15,7 +16,7 @@ var right_character
 var random_character
 
 var difficulty = 1
-var time = 10
+var time = 10 # Time to watch the polaroid until it hides
 
 signal activate_masks()
 
@@ -32,6 +33,7 @@ func start_game() -> void:
 	$Hud/MaskSelector.mask_selected.connect(_on_mask_selected)
 	$Hud/ChooseButtons.accept_pressed.connect(_on_accept_pressed)
 	$Hud/ChooseButtons.reject_pressed.connect(_on_reject_pressed)
+	$Hud/Timer.timer_finished.connect(_on_polaroid_timeout)
 	
 	choose_characters() #chooses and assigns to the childs
 	
@@ -55,7 +57,6 @@ func choose_characters():
 	$Character.set_sprite()
 
 func _on_mask_selected(id: int):
-	print(id)
 	var mask_path = get_mask_img(id)
 	$Character.put_mask_on(mask_path)
 	
@@ -70,7 +71,7 @@ func get_mask_img(n: int):
 
 func _on_accept_pressed():
 	if right_character == random_character:
-		right_guess()	
+		right_guess()
 	else:
 		wrong_guess()
 	activate_masks.emit()
@@ -90,6 +91,7 @@ func right_guess():
 	check_mask_unlocking()
 	choose_characters()
 	$Character.put_mask_on(MASK_PATH+'0.png')
+	apply_difficulty()
 	
 func wrong_guess():
 	#add animation of wrong guess (fading mask and tumb down)
@@ -118,22 +120,18 @@ func check_mask_unlocking():
 		player_masks.append(new_mask)
 		render_masks()
 		adjust_difficulty()
-		
+
 func adjust_difficulty():
 	difficulty += 1
-	if difficulty < 3 and $Hud/MaskSelector.max_mask_selections > 0:
-		$Hud/MaskSelector.max_mask_selections -= 1
-	elif difficulty < 6:
-		#animation of left time could be added 
+	if difficulty <= 3: 
+		if $Hud/MaskSelector.max_mask_selections > 0:
+			$Hud/MaskSelector.max_mask_selections -= 1
+	elif difficulty <= 6:
 		time -= 3
-		polaroid_timer(time)
-		pass
-	elif difficulty < 9:
+	elif difficulty <= 9:
 		#blurred face
 		#to start
 		$Hud/MaskSelector.max_mask_selections = 2
-		
-		pass
 	else:
 		#change characters from time to time, start at 10 seconds
 		#to start
@@ -141,7 +139,13 @@ func adjust_difficulty():
 			time -=1
 		else:
 			time /=2
-		
+
+func apply_difficulty():
+	if difficulty >= 4 and difficulty <= 6:
+		$Hud/Timer.visible = true
+		$Hud/Timer.reset_timer()
+		$Hud/Timer.start_timer(time)
+
 func render_masks():
 	var masks = []
 	for mask_id in player_masks:
@@ -149,14 +153,7 @@ func render_masks():
 	
 	$Hud/MaskSelector.render_masks(masks)
 
-func polaroid_timer(time: int):
-	var timer = Timer.new()
-	timer.wait_time = time
-	timer.one_shot = true
-	timer.timeout.connect(_on_polaroid_timeout)
-	add_child(timer)
-	timer.start()
-
 func _on_polaroid_timeout():
+	$Hud/Timer.visible = false
 	$Hud/Polaroid.texture_path = "res://assets/polaroids/c0.png"
 	$Hud/Polaroid.set_sprite()

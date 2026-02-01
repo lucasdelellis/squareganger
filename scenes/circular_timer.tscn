@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ct4jql0hy73xt"]
+
+[ext_resource type="Script" uid="uid://hg61v0bat8kr" path="res://scripts/circular_timer.gd" id="1_timer"]
+[ext_resource type="Texture2D" uid="uid://bfdstsgv3umdb" path="res://assets/ui/timer.png" id="1_yjc8s"]
+
+[node name="CircularTimer" type="TextureProgressBar" unique_id=433752810]
+offset_left = 1331.0
+offset_top = 99.0
+offset_right = 1537.0
+offset_bottom = 306.0
+scale = Vector2(0.5, 0.5)
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("1_yjc8s")
+script = ExtResource("1_timer")
