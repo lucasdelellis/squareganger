@@ -9,15 +9,11 @@
 script = ExtResource("1_bxhk3")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1119825395]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_jsjm1")
-
-[node name="MaskSelector" parent="." unique_id=93039829 instance=ExtResource("4_umyh0")]
 offset_right = 1920.0
 offset_bottom = 1080.0
+texture = ExtResource("1_jsjm1")
 
-[node name="Score" type="Label" parent="." unique_id=1019938793]
+[node name="ScoreTitle" type="Label" parent="." unique_id=1019938793]
 offset_left = 600.0
 offset_top = 150.0
 offset_right = 865.0
@@ -25,6 +21,19 @@ offset_bottom = 243.0
 theme_override_fonts/font = ExtResource("2_ixg4b")
 theme_override_font_sizes/font_size = 70
 text = "Score:"
+
+[node name="Score" type="Label" parent="." unique_id=173121085]
+offset_left = 1000.0
+offset_top = 150.0
+offset_right = 1051.0
+offset_bottom = 243.0
+theme_override_fonts/font = ExtResource("2_ixg4b")
+theme_override_font_sizes/font_size = 70
+text = "0"
+
+[node name="MaskSelector" parent="." unique_id=93039829 instance=ExtResource("4_umyh0")]
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="RestartButton" type="Button" parent="." unique_id=1780164072]
 custom_minimum_size = Vector2(400, 150)

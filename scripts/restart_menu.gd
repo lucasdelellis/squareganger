@@ -1,12 +1,15 @@
 extends Node
 
-var MAIN_SCENE = preload("res://scenes/game_manager.tscn")
+var MAIN_SCENE = "res://scenes/game_manager.tscn"
 const MASK_PATH = 'res://assets/masks/m'
 var player_masks: Array[int] = GameState.masks
 var selected_masks : Array[int] = [1,2] 
 
 func _ready() -> void:
 	set_masks()
+	$Score.text = str(GameState.score)
+	
+	
 
 func _process(delta: float) -> void:
 	pass
@@ -20,11 +23,17 @@ func set_masks():
 	$MaskSelector.render_masks(masks)
 	$MaskSelector.mask_selected.connect(_on_mask_selected)
 
+func reset_game_state():
+	GameState.score = 0
+	GameState.masks = selected_masks
+	GameState.obtained_masks = selected_masks
+
 func _on_restart_button_pressed() -> void:
 	print("Back to main")
-	get_tree().change_scene_to_packed(MAIN_SCENE)
+	reset_game_state()
+	get_tree().change_scene_to_file(MAIN_SCENE)
 	
-func _on_mask_selected(id: int):
+func _on_mask_selected(id: int): #it may work
 	print(id)
 	var mask_path = get_mask_img(id)
 	#Mask selection

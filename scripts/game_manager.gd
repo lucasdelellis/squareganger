@@ -29,6 +29,7 @@ func start_game() -> void:
 	choose_characters() #chooses and assigns to the childs	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	pass
 	
@@ -67,27 +68,25 @@ func get_mask_img(n: int):
 
 func _on_accept_pressed():
 	if right_character == random_character:
-		#guessed correctly
 		print("Correct guess")
-		GameState.score += 1000	
 		right_guess()	
 	else:
-		print("Wrong guess")
-		get_tree().change_scene_to_packed(RESTART_SCENE)
-		#wrong
+		wrong_guess()
 	
 func _on_reject_pressed():
 	if right_character != random_character:
 		print("Correct guess")
 		right_guess()
-		#guessed correctly
 	else:
-		print("Wrong guess")
-		get_tree().change_scene_to_packed(RESTART_SCENE)
-		#wrong
+		wrong_guess()
 		
 func right_guess():
 	GameState.score += 1000
+	$Hud/Score.text = str(GameState.score)
 	choose_characters()
 	$Character.put_mask_on(MASK_PATH+'0.png')
 	print(GameState.score)
+	
+func wrong_guess():
+	print("Wrong guess")
+	get_tree().change_scene_to_packed(RESTART_SCENE)
