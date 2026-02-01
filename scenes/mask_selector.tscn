@@ -2,17 +2,45 @@
 
 [ext_resource type="Script" uid="uid://bemtrucknqqbf" path="res://scripts/mask_selector.gd" id="1_rev3u"]
 [ext_resource type="Texture2D" uid="uid://em4pw5brnlrk" path="res://assets/ui/mask_selector_background.png" id="2_tqb7k"]
+[ext_resource type="Texture2D" uid="uid://caumq8dnypyy5" path="res://assets/ui/mask_selector_arrows.png" id="3_arrows"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rev3u"]
+atlas = ExtResource("3_arrows")
+region = Rect2(83, 855, 84, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_right"]
+atlas = ExtResource("3_arrows")
+region = Rect2(1265, 843, 92, 135)
 
 [node name="MaskSelector" type="TextureRect" unique_id=1976502493]
 texture = ExtResource("2_tqb7k")
 script = ExtResource("1_rev3u")
 
+[node name="LeftArrow" type="TextureButton" parent="." unique_id=1166853115]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 860.0
+offset_right = 2070.0
+offset_bottom = 1940.0
+texture_normal = SubResource("AtlasTexture_rev3u")
+
 [node name="MaskContainer" type="GridContainer" parent="." unique_id=475199879]
 layout_direction = 2
 layout_mode = 0
-offset_left = 325.0
+offset_left = 290.0
 offset_top = 825.0
-offset_right = 1125.0
+offset_right = 1090.0
 offset_bottom = 1025.0
 theme_override_constants/h_separation = 100
 columns = 3
+
+[node name="RightArrow" type="TextureButton" parent="." unique_id=152842166]
+layout_mode = 0
+offset_left = 1161.0
+offset_top = 860.0
+offset_right = 1253.0
+offset_bottom = 995.0
+texture_normal = SubResource("AtlasTexture_right")
+
+[connection signal="pressed" from="LeftArrow" to="." method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="RightArrow" to="." method="_on_right_arrow_pressed"]
