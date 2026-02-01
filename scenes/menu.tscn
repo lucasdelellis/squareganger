@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://y5oeuqp8xq4n"]
 
 [ext_resource type="Script" uid="uid://3t3hm5kls1e1" path="res://scripts/menu.gd" id="1_yqeox"]
-[ext_resource type="Texture2D" uid="uid://cgk4ywpl5twee" path="res://assets/ui/background.png" id="2_vjb58"]
+[ext_resource type="Texture2D" uid="uid://6tnjmrm8su58" path="res://assets/ui/intro_screen.png" id="2_g3eks"]
 [ext_resource type="FontFile" uid="uid://bl1j2j0d68rmr" path="res://assets/fonts/Bungee-Regular.ttf" id="3_con2f"]
+[ext_resource type="Texture2D" uid="uid://t0v25gxx1s8c" path="res://assets/ui/button.png" id="4_g3eks"]
+[ext_resource type="FontFile" uid="uid://c4c4rxxhwbmjj" path="res://assets/fonts/Squarely.ttf" id="5_v86rl"]
+[ext_resource type="Texture2D" uid="uid://buyjr8ctu5g08" path="res://assets/ui/little_button .png" id="6_13sgg"]
 
 [node name="Menu" type="Node" unique_id=1189525608]
 script = ExtResource("1_yqeox")
@@ -10,7 +13,7 @@ script = ExtResource("1_yqeox")
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1323692999]
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("2_vjb58")
+texture = ExtResource("2_g3eks")
 
 [node name="StartButton" type="Button" parent="." unique_id=737203854]
 anchors_preset = 8
@@ -26,6 +29,45 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_con2f")
 theme_override_font_sizes/font_size = 70
-text = "PLAY"
+icon = ExtResource("4_g3eks")
+flat = true
+
+[node name="TutorialButton" type="Button" parent="." unique_id=645105466]
+offset_left = 675.0
+offset_top = 700.0
+offset_right = 1259.0
+offset_bottom = 863.0
+icon = ExtResource("6_13sgg")
+flat = true
+
+[node name="Label" type="Label" parent="TutorialButton" unique_id=896690868]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 24.0
+offset_right = 443.0
+offset_bottom = 129.0
+theme_override_fonts/font = ExtResource("5_v86rl")
+theme_override_font_sizes/font_size = 100
+text = "TUTORIAL"
+
+[node name="CreditsButton" type="Button" parent="." unique_id=977422739]
+offset_left = 675.0
+offset_top = 870.0
+offset_right = 1259.0
+offset_bottom = 1033.0
+icon = ExtResource("6_13sgg")
+flat = true
+
+[node name="Label" type="Label" parent="CreditsButton" unique_id=561898947]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 22.0
+offset_right = 427.0
+offset_bottom = 127.0
+theme_override_fonts/font = ExtResource("5_v86rl")
+theme_override_font_sizes/font_size = 100
+text = "CREDITS"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]

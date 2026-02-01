@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://dgpsq6t655dao"]
+
+[ext_resource type="Texture2D" uid="uid://cgk4ywpl5twee" path="res://assets/ui/background.png" id="1_0bpdh"]
+[ext_resource type="Script" uid="uid://cbdovludkh5kb" path="res://scripts/credits.gd" id="2_2fbfq"]
+[ext_resource type="FontFile" uid="uid://c4c4rxxhwbmjj" path="res://assets/fonts/Squarely.ttf" id="3_8gwij"]
+[ext_resource type="Texture2D" uid="uid://cgb7bvklroomy" path="res://assets/ui/X.png" id="4_mah5v"]
+
+[node name="Credits" type="TextureRect" unique_id=194052060]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_0bpdh")
+script = ExtResource("2_2fbfq")
+
+[node name="Title" type="Label" parent="." unique_id=939026278]
+layout_mode = 0
+offset_left = 734.0
+offset_top = 69.0
+offset_right = 1192.0
+offset_bottom = 226.0
+theme_override_fonts/font = ExtResource("3_8gwij")
+theme_override_font_sizes/font_size = 150
+text = "CREDITS:"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=968877346]
+layout_mode = 0
+offset_left = 1754.0
+offset_top = 78.0
+offset_right = 1842.0
+offset_bottom = 167.0
+icon = ExtResource("4_mah5v")
+flat = true
+
+[node name="Label" type="Label" parent="." unique_id=1638982316]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 333.0
+offset_right = 692.0
+offset_bottom = 459.0
+theme_override_fonts/font = ExtResource("3_8gwij")
+theme_override_font_sizes/font_size = 110
+text = "2D ARTIST"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Label" unique_id=1000050842]
+layout_mode = 0
+offset_left = -18.0
+offset_top = 110.0
+offset_right = 577.0
+offset_bottom = 215.0
+theme_override_fonts/font = ExtResource("3_8gwij")
+theme_override_font_sizes/font_size = 80
+text = "JUANCHO RIVEROS"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1074811385]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 628.0
+offset_right = 1240.0
+offset_bottom = 754.0
+theme_override_fonts/font = ExtResource("3_8gwij")
+theme_override_font_sizes/font_size = 110
+text = "PROGRAMMERS"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Label2" unique_id=1972019164]
+layout_mode = 0
+offset_top = 110.0
+offset_right = 595.0
+offset_bottom = 283.0
+theme_override_fonts/font = ExtResource("3_8gwij")
+theme_override_font_sizes/font_size = 80
+text = "LUCAS DE LELLIS
+MICAELA RASSO"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="." unique_id=1070726465]
+layout_mode = 0
+offset_left = 1274.0
+offset_top = 333.0
+offset_right = 1842.0
+offset_bottom = 459.0
+theme_override_fonts/font = ExtResource("3_8gwij")
+theme_override_font_sizes/font_size = 110
+text = "MUSICIAN"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Label3" unique_id=1695737131]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 110.0
+offset_right = 584.0
+offset_bottom = 215.0
+theme_override_fonts/font = ExtResource("3_8gwij")
+theme_override_font_sizes/font_size = 80
+text = "DJ SCIHACKER"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

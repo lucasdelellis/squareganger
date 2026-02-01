@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://db571g68vb21o"]
+
+[ext_resource type="Texture2D" uid="uid://vau1pceu73l2" path="res://assets/tutorial/tut0.png" id="1_ph3nu"]
+[ext_resource type="Script" uid="uid://lygx8awkeuc1" path="res://scripts/tutorial.gd" id="2_4kmhl"]
+[ext_resource type="Texture2D" uid="uid://caumq8dnypyy5" path="res://assets/ui/mask_selector_arrows.png" id="3_cq4me"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yjpi"]
+atlas = ExtResource("3_cq4me")
+region = Rect2(83, 855, 84, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbqnl"]
+atlas = ExtResource("3_cq4me")
+region = Rect2(1265, 843, 92, 135)
+
+[node name="Tutorial" type="TextureRect" unique_id=1321872105]
+texture = ExtResource("1_ph3nu")
+script = ExtResource("2_4kmhl")
+
+[node name="LeftArrow" type="TextureButton" parent="." unique_id=1855860227]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 860.0
+offset_right = 2070.0
+offset_bottom = 1940.0
+texture_normal = SubResource("AtlasTexture_6yjpi")
+
+[node name="RightArrow" type="TextureButton" parent="." unique_id=1353267346]
+layout_mode = 0
+offset_left = 1640.0
+offset_top = 860.0
+offset_right = 1732.0
+offset_bottom = 995.0
+texture_normal = SubResource("AtlasTexture_gbqnl")
+
+[connection signal="pressed" from="LeftArrow" to="." method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="RightArrow" to="." method="_on_right_arrow_pressed"]
